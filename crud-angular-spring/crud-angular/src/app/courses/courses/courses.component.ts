@@ -14,7 +14,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 export class CoursesComponent {
 
   courses$: Observable <Course[]>;
-  displayedColumns = ['name', 'category']
+  displayedColumns = ['_id','name', 'category']
 
   //coursesService: CoursesService;
 
