@@ -5,15 +5,17 @@ import { SharedModule } from '../shared/shared.module';
 
 import { AppMaterialModule } from './../shared/app-material/app-material.module';
 import { CoursesRoutingModule } from './courses-routing.module';
-import { CoursesComponent } from './courses/courses.component';
-import { CourseFormComponent } from './course-form/course-form.component';
+import { CoursesComponent } from './containers/courses/courses.component';
+import { CourseFormComponent } from './containers/course-form/course-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CursoListaComponent } from './components/curso-lista/curso-lista.component';
 
 
 @NgModule({
   declarations: [
     CoursesComponent,
-    CourseFormComponent
+    CourseFormComponent,
+    CursoListaComponent
   ],
   imports: [
     CommonModule,

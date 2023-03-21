@@ -1,6 +1,6 @@
-import { SharedModule } from './../../shared/shared.module';
-import { CoursesService } from './../services/courses.service';
-import { Course } from './../model/course';
+import { SharedModule } from '../../../shared/shared.module';
+import { CoursesService } from '../../services/courses.service';
+import { Course } from '../../model/course';
 import { Component } from '@angular/core';
 import { catchError, Observable, of } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,7 +15,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CoursesComponent {
 
   courses$: Observable <Course[]>;
-  displayedColumns = ['name', 'category','actions']
+
 
   //coursesService: CoursesService;
 

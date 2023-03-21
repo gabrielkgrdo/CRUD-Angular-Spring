@@ -2,6 +2,8 @@ package com.gabriel.crudspring.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,8 +34,9 @@ public class CourseController {
     }
 
     @PostMapping
-    public void create(@RequestBody Course course) {
+    public ResponseEntity<Course> create(@RequestBody Course course) {
         //System.out.println(course.getName());
-        courseRepository.save(course);
+        return ResponseEntity.status(HttpStatus.CREATED)
+            .body(courseRepository.save(course));
     }
 }

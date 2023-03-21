@@ -1,8 +1,8 @@
 <mat-card>
   <mat-card-content>
-    <mat-toolbar color="primary">Adicionar um novo Curso</mat-toolbar>
+    <mat-toolbar color="primary" class="min-width">Adicionar um novo Curso</mat-toolbar>
 
-    <form [formGroup]="form" class="full-width">
+    <form [formGroup]="form" class="min-width">
       <mat-form-field class="full-width">
         <mat-label>Nome</mat-label>
         <input matInput formControlName="name">
@@ -20,7 +20,7 @@
 
   <mat-card-actions >
     <button mat-raised-button color="primary" (click)="onSubmit()">Salvar</button>
-    <button mat-raised-button color="warn" (click)="onCancel">Cancelar</button>
+    <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
   </mat-card-actions>
 
 </mat-card>
