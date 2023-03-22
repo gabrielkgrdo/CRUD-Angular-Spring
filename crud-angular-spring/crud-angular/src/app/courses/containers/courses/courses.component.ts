@@ -43,8 +43,10 @@ export class CoursesComponent {
   }
 
   onAdd(){
-    this.router.navigate(['new'], {relativeTo: this.route});
+    this.router.navigate(['adicionar-curso'], {relativeTo: this.route});
   }
 
-
+  onEdit(course: Course){
+    this.router.navigate(['editar', course._id], {relativeTo: this.route});
+  }
 }
