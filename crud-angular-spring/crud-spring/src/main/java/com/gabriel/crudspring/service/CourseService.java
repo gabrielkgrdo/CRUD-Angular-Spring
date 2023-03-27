@@ -1,0 +1,54 @@
+package com.gabriel.crudspring.service;
+
+import java.util.List;
+
+
+import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.gabriel.crudspring.exception.RegistroNaoEncontrado;
+import com.gabriel.crudspring.model.Course;
+import com.gabriel.crudspring.repository.CourseRepository;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+@Validated
+@Service
+public class CourseService {
+
+    private final CourseRepository courseRepository;
+
+    public CourseService(CourseRepository courseRepository){
+        this.courseRepository = courseRepository;
+    }
+
+    public List<Course> list() {
+        return courseRepository.findAll();
+    }
+
+    public Course findById(@PathVariable @NotNull @Positive Long id) {
+        return courseRepository.findById(id).orElseThrow(() -> new RegistroNaoEncontrado(id));
+    }
+
+    public Course create(@Valid Course course) {
+        return courseRepository.save(course);
+    }
+
+    public Course update(@NotNull @Positive Long id, @Valid Course course) {
+        return courseRepository.findById(id)
+                .map(registro -> {
+                    registro.setName(course.getName());
+                    registro.setCategory(course.getCategory());
+                    return courseRepository.save(registro);
+                }).orElseThrow(() -> new RegistroNaoEncontrado(id));
+    }
+
+    public void delete(@PathVariable @NotNull @Positive Long id) {
+        courseRepository.delete(courseRepository.findById(id)
+        .orElseThrow(() -> new RegistroNaoEncontrado(id)));
+        
+    }
+}
