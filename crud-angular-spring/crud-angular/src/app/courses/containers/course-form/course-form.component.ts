@@ -37,7 +37,7 @@ export class CourseFormComponent {
 
   onSubmit(){
     this.service.save(this.form.value)
-      .subscribe(sucesso =>  this.onSucess(), erro => this.onError());
+      .subscribe(sucesso =>  this.onSucess(), erro => this.ErroCamposObrigatorios());
   }
 
   private onSucess(){
@@ -47,6 +47,10 @@ export class CourseFormComponent {
 
   private onError(){
     this._snackBar.open("Erro ao salvar o curso", '', { duration: 5000});
+  }
+
+  private ErroCamposObrigatorios(){
+    this._snackBar.open("Preencha os campos obrigatórios!", '', { duration: 5000});
   }
 
   onCancel(){
